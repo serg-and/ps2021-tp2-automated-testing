@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<title>Login | Rough road</title>
+<head> 
+<link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap(login).min.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+   <div class="row g-0">
+       <div class="col g-0">
+           <div class="left-side">
+           </div>
+       </div>
+       <div class="col g-0">
+           <div class="right-side"></div>
+       </div>
+   </div>
+   <div class="container-fluid bg">
+       <div class="row justify-content-center">
+           <div class="col-12 col-sm-6 col-md-3">
+               <form class="form-container" action="/wsgi/login.py" method="post">
+                   <div class="mb-3">
+                       <label for="exampleInputUsername" class="form-label">Email</label>
+                       <input type="text" name="email" class="form-control" id="exampleInputUsername" required>
+                       <div id="emailHelp" class="form-text"> And remember to be careful out there.</div>
+                   </div>
+                   <div class="mb-3">
+                       <label for="exampleInputPassword1" class="form-label">Password</label>
+                       <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+                   </div>
+                   <div class="mb-3 form-check">
+                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                       <label class="form-check-label" for="exampleCheck1">Keep me logged in</label>
+                   </div>
+                   <div class="container">
+                       <div class="row">
+                           <div class="col text-center">
+							   <input type="submit" value="Start The Fun" class="btn btn-primary btn-lg active">
+                           </div>
+                       </div>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
+</body>
+</html>
