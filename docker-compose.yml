@@ -5,10 +5,6 @@ secrets:
   papa_login:
     file: ./secrets/papa_login.json
 services:
-  attacker:
-    build: attacker
-    ports:
-    - 40004:40004
   mysql:
     build: mariadb
     environment:
@@ -36,8 +32,4 @@ services:
     - papa_login
     volumes:
     - ./httpd-alpine/public_html:/usr/local/apache2/htdocs/
-  user:
-    build: user
-    ports:
-    - 50005:50005
 version: '3.9'
