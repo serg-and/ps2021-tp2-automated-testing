@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<title>POO | POO </title>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/assets/css/error.css">
+    <meta http-equiv="refresh" content="1; URL=https://youtu.be/8mkofgRW1II" />
+
+</head>
+
+
+<body>
+
+    <div id="page">
+        <div id="container">
+            <h1>;) </h1>
+            <h2>Oopsie Woopsie! Uwu We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to ﬁx this!</h2>
+            <video width="320" height="240"  id="videoPlayer">
+                <source src="/assets/vidoe/papa.mp4" type="video/mp4" onclick="this.play()">
+               
+            </video>
+            <p>#Dreamteam</p>
+        </div>
+    </div>
+
+    
+   
+    
+    
+
+    <p></p>
+<script>
+var v = document.getElementById('videoPlayer');
+    var vv = document.getElementById('vOverlay');
+    <!-- Auto play, Half volume -->
+    v.play()
+    v.volume = 0.5;
+    v.firstChild.nodeValue = "Play";
+
+    <!-- Play, Pause -->
+    vv.addEventListener('click',function(e){
+        if (!v.paused) {
+            console.log("pause playback");
+            v.pause();
+            v.firstChild.nodeValue = 'Pause';
+        } else {
+            console.log("start playback")
+            v.play();
+            v.firstChild.nodeValue = 'Play';
+        }
+      });
+    </script>
+</body>
+
+</html>

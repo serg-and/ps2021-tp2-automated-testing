@@ -1,0 +1,133 @@
+
+#container1
+{
+    margin-top: 50px;
+}
+
+#container-description
+{
+    margin-top: 50px;
+}
+
+#container-reviews
+{
+    margin-top: 50px;
+}
+
+#carousels
+{
+    max-height: 300px;
+}
+
+.newarrival
+{
+    background: green;
+    width: 50px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.price
+{
+    color: green;
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: -10px;
+}
+
+.seller
+{
+  margin-top: -8px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.seller a
+{
+  text-decoration: none;
+}
+
+.Description
+{
+    margin: 100px;
+}
+
+#Reviews
+{
+	width: 100%;
+	max-width: 1130px;
+}
+
+.Comment {
+  margin-bottom: 15px;
+  }
+
+.Comment-header {}
+
+.Avatar 
+{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Avatar img 
+{
+	border-radius: 50%;
+	max-width: 60px;
+}
+
+.Comment-body {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  width: calc(100% - 80px);
+  }
+
+.Comment-text {
+  max-width: 100%;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  }
+
+.user {
+  font-size: 25px;
+  }
+
+.Comment-datetime {
+  font-size: 15px;
+  margin-left: 15px;
+  color: grey;
+  }
+
+.likes {
+  font-size: 17px;
+  margin-left: 10px;
+  color: grey;
+  }
+
+.Write-review {
+  background-color: white;
+  padding: 8px;
+  }
+
+.Write-review input {
+	background-color: indianred;
+    color: black;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    float: right;
+    margin-top: 5px;
+}
+
+.resizedTextbox {
+  resize: none;
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid grey;
+  padding: 8px; 
+  }
