@@ -5,7 +5,7 @@ on:
 
 jobs:
   Build-and-Run-Docker-Image:
-    name: Build and rund Docker image
+    name: Build and run Docker image
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
