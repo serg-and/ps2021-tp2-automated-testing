@@ -42,7 +42,7 @@ jobs:
         sysdig-secure-url: https://eu1.app.sysdig.com
         dockerfile-path: ./Dockerfile
         input-type: docker-daemon
-        ignore-failed-scan: true
+        ignore-failed-scan: false
         # Sysdig inline scanner requires privileged rights
         run-as-user: root
 
