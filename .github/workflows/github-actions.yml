@@ -15,3 +15,10 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+  Build-Docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build Docker image
+        run: docker build . --file Dockerfile --tag ${{ github.repository }}:latest
+      - name: run Docker image
+        run: docker run --tag ${{ github.repository }}:latest
