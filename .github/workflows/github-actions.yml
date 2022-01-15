@@ -66,6 +66,7 @@ jobs:
       #  run: |
       #    cd ./public_html/wsgi/
       #    ls
+      - run: mv ./public_html/wsgi/* .
       - run: ls
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python-3.8@master
