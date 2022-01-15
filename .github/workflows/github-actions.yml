@@ -15,7 +15,7 @@ jobs:
       #- name: scan Docker image
       #  run: docker scan ${{ github.repository }}:latest
   
-  Scan-Sysdig:
+  Sysdig-Scan-Dockerfile:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,7 +42,7 @@ jobs:
         sysdig-secure-url: https://eu1.app.sysdig.com
         dockerfile-path: ./Dockerfile
         input-type: docker-daemon
-        ignore-failed-scan: false
+        ignore-failed-scan: true
         # Sysdig inline scanner requires privileged rights
         run-as-user: root
 
@@ -51,3 +51,18 @@ jobs:
       if: always()
       with:
         sarif_file: ${{ steps.scan.outputs.sarifReport }}
+  Snyk-Scan-WSGI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/python@master
+        continue-on-error: true # To make sure that SARIF upload gets called
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --sarif-file-output=snyk.sarif
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk.sarif
