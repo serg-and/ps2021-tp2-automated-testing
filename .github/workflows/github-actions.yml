@@ -9,4 +9,8 @@ jobs:
       - name: build Docker image
         run: docker build . --file Dockerfile --tag ${{ github.repository }}:latest
       - name: run Docker image
-        run: docker run ${{ github.repository }}:latest
+        run: docker run -d ${{ github.repository }}:latest
+      - name: install docker-scan
+        run: apt-get install -y docker-scan-plugin
+      - name: scan Docker image
+        run: docker scan ${{ github.repository }}:latest
