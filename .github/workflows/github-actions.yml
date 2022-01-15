@@ -67,9 +67,8 @@ jobs:
       #    cd ./public_html/wsgi/
       #    ls
       - run: ls
-        working-directory: public_html/wsgi/
       - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python@master
+        uses: snyk/actions/python-3.8@master
         continue-on-error: false # To make sure that SARIF upload gets called
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
