@@ -1,4 +1,4 @@
-name: Full Testing Suite
+name: new title
 on:
   push:
     branches:
