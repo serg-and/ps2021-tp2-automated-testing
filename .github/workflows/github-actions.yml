@@ -5,6 +5,7 @@ on:
       - main
 jobs:
   Build-and-Run-Docker-Image:
+    name: Build and rund Docker image
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -19,6 +20,7 @@ jobs:
       #  run: docker scan ${{ github.repository }}:latest
   
   Sysdig-Scan-Dockerfile:
+    name: Sysdig scan Docker image
     runs-on: ubuntu-latest
 
     steps:
@@ -56,6 +58,7 @@ jobs:
         sarif_file: ${{ steps.scan.outputs.sarifReport }}
   
   Snyk-Scan-WSGI:
+    name: Snyk scan WSGI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -76,6 +79,7 @@ jobs:
           sarif_file: snyk.sarif
 
   snyk-container-scan:
+    name: Snyk container scan
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
