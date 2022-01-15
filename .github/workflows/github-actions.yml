@@ -2,7 +2,7 @@ name: Full Testing Suite
 on:
   push:
     branches:
-      - main
+      - develop
 jobs:
   Build-and-Run-Docker-Image:
     name: Build and rund Docker image
