@@ -66,6 +66,7 @@ jobs:
       #  run: |
       #    cd ./public_html/wsgi/
       #    ls
+      - working-directory: public_html/wsgi/
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/python@master
         continue-on-error: false # To make sure that SARIF upload gets called
