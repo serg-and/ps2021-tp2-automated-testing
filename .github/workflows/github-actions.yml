@@ -1,7 +1,7 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  Test-Docker-Image:
+  Build-and-Run-Docker-Image:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -10,7 +10,44 @@ jobs:
         run: docker build . --file Dockerfile --tag ${{ github.repository }}:latest
       - name: run Docker image
         run: docker run -d ${{ github.repository }}:latest
-      - name: install docker-scan
-        run: sudo apt-get update && sudo apt-get install -y docker-scan-plugin
-      - name: scan Docker image
-        run: docker scan ${{ github.repository }}:latest
+      #- name: install docker-scan
+      #  run: sudo apt-get update && sudo apt-get install -y docker-scan-plugin
+      #- name: scan Docker image
+      #  run: docker scan ${{ github.repository }}:latest
+  
+  Scan-Sysdig:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      # Tag image to be built
+      # Change ${{ github.repository }} variable by another image name if you want but don't forget changing also image-tag below
+      run: docker build . --file Dockerfile --tag ${{ github.repository }}:latest
+
+    - name: Sysdig Secure Inline Scan
+      id: scan
+      uses: sysdiglabs/scan-action@768d7626a14897e0948ea89c8437dd46a814b163
+      with:
+        # Tag of the image to analyse. 
+        # Change ${{ github.repository }} variable by another image name if you want but don't forget changing also image-tag above
+        image-tag: ${{ github.repository }}:latest
+        # API token for Sysdig Scanning auth
+        sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN}}
+        # Sysdig secure endpoint. Please read: https://docs.sysdig.com/en/docs/administration/saas-regions-and-ip-ranges/
+        # US-East https://secure.sysdig.com
+        # US-West https://us2.app.sysdig.com
+        # EU      https://eu1.app.sysdig.com 
+        sysdig-secure-url: https://eu1.app.sysdig.com
+        dockerfile-path: ./Dockerfile
+        input-type: docker-daemon
+        ignore-failed-scan: true
+        # Sysdig inline scanner requires privileged rights
+        run-as-user: root
+
+    - uses: github/codeql-action/upload-sarif@v1
+      #Upload SARIF file
+      if: always()
+      with:
+        sarif_file: ${{ steps.scan.outputs.sarifReport }}
