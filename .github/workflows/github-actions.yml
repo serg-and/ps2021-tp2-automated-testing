@@ -1,4 +1,4 @@
-name: Full Testing Suite
+name: GitHub Actions - Full Testing Suite
 on:
   push:
     branches:
