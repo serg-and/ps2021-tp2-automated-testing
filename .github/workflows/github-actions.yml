@@ -1,6 +1,6 @@
 name: Full Testing Workflow
 on:
-  pull_request:
+  push:
     branches: main
 
 jobs:
