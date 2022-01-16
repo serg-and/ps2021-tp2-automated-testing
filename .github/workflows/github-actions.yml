@@ -15,7 +15,7 @@ jobs:
       - name: run Docker image
         run: docker run -p 80:80 -d ${{ github.repository }}:latest
       - name: Get web output
-        run: curl http://localhost:80
+        run: curl http://localhost:81
   
   Sysdig-Scan-Dockerfile:
     name: Sysdig scan Docker image
