@@ -16,10 +16,10 @@ jobs:
         run: docker run -p 80:80 -d ${{ github.repository }}:latest
       - name: Get web output
         run: |
-          code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:80) \
-          if [ $r = 200 ]; then r=0; fi
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://www.google.com) ;
+          if [ $code = 200 ]; then code=0; fi
           exit $code
-  
+
   Sysdig-Scan-Dockerfile:
     name: Sysdig scan Docker image
     runs-on: ubuntu-latest
