@@ -58,11 +58,10 @@ jobs:
       with:
         sarif_file: ${{ steps.scan.outputs.sarifReport }}
     
-    - name: Check snyk scan status
+    - name: Check Sysdig scan status
       run: |
-        result=$(cat snyk.sarif) | \
+        result=$(cat ${{ steps.scan.outputs.sarifReport }}) | \
           jq -r '.runs[].results | length'
-        )
         exit $result
   
   Snyk-Scan-WSGI:
